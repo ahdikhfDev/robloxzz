@@ -1,0 +1,5 @@
+# Human-readable memory usage
+free -h
+
+# Detailed virtual memory stats
+vmstat -s

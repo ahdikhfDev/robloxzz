@@ -1,0 +1,10 @@
+# View real-time CPU & process usage
+top
+# or (if installed)
+htop
+
+# Check number of CPU cores
+nproc
+
+# Detailed CPU info
+lscpu

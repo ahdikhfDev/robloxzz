@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thirty - Landing Page</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+        header { padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: #38bdf8; }
+        nav a { color: #94a3b8; text-decoration: none; margin-left: 1.5rem; transition: color 0.3s; }
+        nav a:hover { color: #38bdf8; }
+        .hero { padding: 6rem 5%; text-align: center; background: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%); }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero p { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 2rem; }
+        .btn { display: inline-block; padding: 0.8rem 2rem; background: #38bdf8; color: #0f172a; font-weight: 600; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3); }
+        .features { padding: 5rem 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .card { background: #1e293b; padding: 2rem; border-radius: 12px; border: 1px solid #334155; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); border-color: #38bdf8; }
+        .card h3 { color: #38bdf8; margin-bottom: 0.8rem; font-size: 1.3rem; }
+        footer { text-align: center; padding: 2rem; color: #64748b; border-top: 1px solid #1e293b; margin-top: 3rem; }
+        @media (max-width: 768px) { header { flex-direction: column; gap: 1rem; } nav a { margin: 0 0.8rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">THIRTY</div>
+        <nav><a href="#fitur">Fitur</a> <a href="#tentang">Tentang</a> <a href="#kontak">Kontak</a></nav>
+    </header>
+    <section class="hero">
+        <h1>Asisten AI Cerdas untuk Kebutuhanmu</h1>
+        <p>Kelola server, coding otomatis, dan automasi tugas berat tanpa ribet. Siap 24/7.</p>
+        <a href="#fitur" class="btn">Mulai Sekarang</a>
+    </section>
+    <section id="fitur" class="features">
+        <div class="card"><h3>⚡ Eksekusi Cepat</h3><p>Respons instan untuk perintah sistem, monitoring real-time, dan manajemen resource.</p></div>
+        <div class="card"><h3>🛠️ Development</h3><p>Menulis, debug, dan deploy kode langsung di server. Git integration built-in.</p></div>
+        <div class="card"><h3>🔒 Aman & Terkontrol</h3><p>Operasi destruktif butuh konfirmasi. Log lengkap untuk audit setiap aksi.</p></div>
+    </section>
+    <footer>&copy; 2026 Thirty AI. Dibuat untuk Ahdi Khalida Fathir.</footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Filesystem disk space usage
+df -h
+
+# Check size of current directory contents
+du -sh *
