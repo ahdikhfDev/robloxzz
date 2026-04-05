@@ -1,8 +1,13 @@
 import os
+import subprocess
 from docx import Document
 from docx.shared import Pt, Inches, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml.ns import qn
+
+# Konfigurasi Telegram (disamakan dengan kirim_tele.py)
+TOKEN = "8187479612:AAE3ZF-qItlSd2MhoZX2e0NbvTBaeAVemhc"
+CHAT_ID = "7250558059"
 
 def set_run_font(run, font_name='Times New Roman', size=12, bold=False, italic=False, color=None):
     run.font.name = font_name
@@ -36,6 +41,31 @@ def add_heading_custom(doc, text, level=1):
     for run in h.runs:
         set_run_font(run, font_name='Times New Roman', size=14 if level==1 else 12, bold=True)
     return h
+
+def kirim_ke_telegram(filepath):
+    """Mengirim file laporan ke Telegram Bot"""
+    if not os.path.exists(filepath):
+        print(f"⚠️ File tidak ditemukan: {filepath}")
+        return
+        
+    filename = os.path.basename(filepath)
+    cmd = [
+        "curl", "-s", "-F", f"chat_id={CHAT_ID}",
+        "-F", f"document=@{filepath}",
+        "-F", f"caption=📄 *Laporan IoT Akademik*\nFile: {filename}\nStatus: ✅ Selesai dibuat.",
+        "-F", "parse_mode=Markdown",
+        f"https://api.telegram.org/bot{TOKEN}/sendDocument"
+    ]
+    print("📤 Mengirim laporan ke Telegram...")
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    
+    if result.returncode == 0 and '"ok":true' in result.stdout:
+        print("✅ Berhasil dikirim ke Telegram!")
+    else:
+        print(f"⚠️ Gagal kirim ke Telegram. Response: {result.stdout}")
+        if result.stderr:
+            print(f"Error: {result.stderr}")
+    return result.stdout
 
 def main():
     doc = Document()
@@ -153,6 +183,9 @@ def main():
     output_path = os.path.join(os.path.dirname(__file__), "Laporan_IoT_Akademik.docx")
     doc.save(output_path)
     print(f"✅ Laporan berhasil dibuat: {output_path}")
+    
+    # Kirim ke Telegram
+    kirim_ke_telegram(output_path)
 
 if __name__ == "__main__":
     main()
